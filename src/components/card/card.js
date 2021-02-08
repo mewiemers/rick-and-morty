@@ -29,6 +29,7 @@ export function createCard({ imgSrc, name, species, gender, status, origin }) {
           }),
           createElement("p", {
             innerText: `${status === "Alive" ? "🤗" : "⚱"} - ${status}`,
+            className: "card__status",
           }),
         ],
       }),
