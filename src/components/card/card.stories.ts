@@ -1,11 +1,37 @@
 import "./card.css";
 import { createCard } from "./card";
+import { createElement } from "../../utils/createElement";
 
 export default {
   title: "Components/Card",
   parameters: { layout: "centered" },
 };
+export const Multiple = () => {
+  const characters = [
+    {
+      imgSrc: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+      name: "Summer Smith",
+      status: "Alive",
+      species: "Human",
+      origin: { name: "Earth (Replacement Dimension)" },
+      gender: "Female",
+    },
+    {
+      imgSrc: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+      name: "Beth Smith",
+      status: "Alive",
+      species: "Human",
+      origin: { name: "Earth (Replacement Dimension)" },
+      gender: "Female",
+    },
+  ];
+  const container = createElement("div", {
+    className: "container",
+    childs: characters.map((character) => createCard(character)),
+  });
 
+  return container;
+};
 export const Abadango_Cluster_Princess = () =>
   createCard({
     imgSrc: "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
