@@ -1,0 +1,26 @@
+.card {
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  background-color: chartreuse;
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+}
+.card__name {
+  text-align: center;
+}
+.card__species {
+  text-decoration: underline #fff;
+  font-weight: 900;
+  text-align: center;
+  font-size: 2rem;
+}
+.card-i {
+  border: 2px dotted black;
+}
+.card__gender {
+  padding-left: 2em;
+}
+.card__status {
+  display: inline;
+}
