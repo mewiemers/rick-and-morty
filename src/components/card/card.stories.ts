@@ -1,6 +1,7 @@
 import "./card.css";
 import { createCard } from "./card";
 import { createElement } from "../../utils/createElement";
+import { getCharacter } from "../../utils/api";
 
 export default {
   title: "Components/Card",
@@ -51,3 +52,12 @@ export const Abradolf_Lincler = () =>
     origin: { name: "Earth (Replacement Dimension)" },
     status: "unkown",
   });
+export const CharacterFromAPI = (args, { loaded: { character } }) => {
+  return createCard(character);
+};
+
+CharacterFromAPI.loaders = [
+  async () => ({
+    character: await getCharacter(66),
+  }),
+];

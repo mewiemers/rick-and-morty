@@ -7,6 +7,7 @@ export function createCard({ imgSrc, name, species, gender, status, origin }) {
       createElement("img", {
         className: "card__portrait",
         src: imgSrc,
+        alt: "                                    ",
       }),
       createElement("div", {
         className: "card-i",
