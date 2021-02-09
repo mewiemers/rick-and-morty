@@ -1,5 +1,5 @@
 import "./card.css";
-import { createCard } from "../../components/card/card";
+import { createCard } from "./card";
 
 export default {
   title: "Components/Card",
