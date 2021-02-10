@@ -1,7 +1,7 @@
 import "./card.css";
 import { createCard } from "./card";
 import { createElement } from "../../utils/createElement";
-import { getCharacter, getCharacters } from "../../utils/api";
+import { Character, getCharacter, getCharacters } from "../../utils/api";
 
 export default {
   title: "Components/Card",
@@ -73,3 +73,48 @@ CharactersFromAPI.loaders = [
     characters: await getCharacters(),
   }),
 ];
+
+export const RandomCharacter = () => {
+  const randomButton = createElement("button", {
+    innerText: "Load random character",
+    onclick: async () => {
+      function getRandomNumber(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+      const randId = getRandomNumber(1, 670);
+      console.log(randId);
+
+      const randChar = await getCharacter(randId);
+      console.log(randChar);
+      const randCard = createCard(randChar);
+      console.log(randCard);
+      if (container.childNodes.length > 1) {
+        container.removeChild(container.lastChild);
+      }
+      container.append(randCard);
+    },
+  });
+  const container = createElement("div", {
+    //     className: "container",
+    childs: [randomButton],
+  });
+  return container;
+};
+
+// Verify each step (alert, console.log)
+// 1) generate random character id
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#getting_a_random_number_between_two_values
+// 2) getCharacter from API
+// 3) create card
+// 4) append card
+// 5) make sure to only display one character
+// 6) feel awesome 🐱‍👤
+
+//
+
+// const randommin = 1;
+// const randommax = 671;
+
+// console.log(~~(Math.random()* randommax) + randommin);

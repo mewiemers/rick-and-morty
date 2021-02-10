@@ -28,31 +28,54 @@ export type APICharacters = {
   };
   results: APICharacter[];
 };
+export type Character = {
+  imgSrc: string;
+  name: string;
+  status: "Alive" | "Dead" | "unknown";
+  gender: "Female" | "Male" | "Genderless" | "unknown";
+  species: string;
+  origin: {
+    name: string;
+  };
+  // results: APICharacter[];
+};
+
+function convertToCharacter(apiCharacter: APICharacter): Character {
+  return {
+    imgSrc: apiCharacter.image,
+    name: apiCharacter.name,
+    status: apiCharacter.status,
+    origin: { name: apiCharacter.origin.name },
+    species: apiCharacter.species,
+    gender: apiCharacter.gender,
+  };
+}
 
 export async function getCharacter(id: number) {
   const response = await fetch(
     `https://rickandmortyapi.com/api/character/${id}`
   );
+  if (!response.ok) {
+    const result = await response.json();
+    return {
+      imgSrc: "",
+      name: result.error,
+      status: "Dead",
+      species: "Human",
+      origin: {
+        name: "Internet",
+      },
+    } as Character;
+  }
   const result = (await response.json()) as APICharacter;
-  const character = {
-    imgSrc: result.image,
-    name: result.name,
-    status: result.status,
-    species: result.species,
-    origin: { name: result.origin.name },
-  };
+  const character = convertToCharacter(result);
   return character;
 }
 export async function getCharacters() {
   const response = await fetch(`https://rickandmortyapi.com/api/character/`);
   const result = (await response.json()) as APICharacters;
-  const characters = result.results.map((apiCharacter) => ({
-    imgSrc: apiCharacter.image,
-    gender: apiCharacter.gender,
-    name: apiCharacter.name,
-    status: apiCharacter.status,
-    species: apiCharacter.species,
-    origin: { name: apiCharacter.origin.name },
-  }));
+  const characters = result.results.map((apiCharacter) =>
+    convertToCharacter(apiCharacter)
+  );
   return characters;
 }
