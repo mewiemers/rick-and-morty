@@ -2,7 +2,22 @@ import { createElement } from "../../utils/createElement";
 export function createCard({ imgSrc, name, gender, status, species, origin }) {
   return createElement("article", {
     className: "card",
-    childs: [
+
+    childs:[
+    createElement("div", {
+      className: "card__inner",
+    }),
+    createElement("div", {
+      className: "card__front",
+      childs: [
+    }),
+      createElement("img", {
+        className: "card__portrait",
+        src: imgSrc,
+        alt: "",
+
+      }),
+
       createElement("div", {
         className: "card__inner",
         childs: [
