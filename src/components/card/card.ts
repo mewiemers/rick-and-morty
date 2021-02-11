@@ -44,6 +44,8 @@ export function createCard({ imgSrc, name, species, gender, status, origin }) {
     ],
     
   })
-  createElement("p")
+  createElement("p"){
+    className:"card__back",
+  }
   ]
 }
