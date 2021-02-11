@@ -118,6 +118,7 @@ export const RandomCharacter = () => {
 // const randommax = 671;
 
 // console.log(~~(Math.random()* randommax) + randommin);
+<<<<<<< HEAD
 export const CharactersFromAPIWithFilter = (
   args,
   { loaded: { characters } }
@@ -149,3 +150,5 @@ CharactersFromAPIWithFilter.loaders = [
     characters: await getCharacters(),
   }),
 ];
+=======
+>>>>>>> main

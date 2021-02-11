@@ -71,10 +71,15 @@ export async function getCharacter(id: number) {
   const character = convertToCharacter(result);
   return character;
 }
+<<<<<<< HEAD
 export async function getCharacters(name?: string) {
   const response = await fetch(
     `https://rickandmortyapi.com/api/character/${name ? `?name=${name}` : ""}`
   );
+=======
+export async function getCharacters() {
+  const response = await fetch(`https://rickandmortyapi.com/api/character/`);
+>>>>>>> main
   const result = (await response.json()) as APICharacters;
   const characters = result.results.map((apiCharacter) =>
     convertToCharacter(apiCharacter)

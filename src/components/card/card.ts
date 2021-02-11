@@ -3,11 +3,26 @@ import { createElement } from "../../utils/createElement";
 export function createCard({ imgSrc, name, species, gender, status, origin }) {
   return createElement("div", {
     className: "card",
+<<<<<<< HEAD:src/components/card/card.ts
     childs: [
       createElement("img", {
         className: "card__portrait",
         src: imgSrc,
         alt: "                                    ",
+=======
+    childs:[
+    createElement("div", {
+      className: "card__inner",
+    }),
+    createElement("div", {
+      className: "card__front",
+      childs: [
+    }),
+      createElement("img", {
+        className: "card__portrait",
+        src: imgSrc,
+        alt: "",
+>>>>>>> main:src/components/card/card.js
       }),
       createElement("div", {
         className: "card-i",
@@ -35,5 +50,8 @@ export function createCard({ imgSrc, name, species, gender, status, origin }) {
         ],
       }),
     ],
-  });
+    
+  })
+  createElement("p")
+  ]
 }
